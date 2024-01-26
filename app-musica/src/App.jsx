@@ -1,15 +1,27 @@
-import { Sidebar } from "./components/navigation/Sidebar";
-import { Dashboard } from "./components/views/Dashboard";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/navigation/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <>
-      <main class="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
-        <div class="flex items-start justify-between">
-          <Sidebar />
-          <Dashboard />
+      <Router>
+        <div className="container">
+          <Header />
+
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
         </div>
-      </main>
+      </Router>
+      <ToastContainer />
     </>
   );
 }
